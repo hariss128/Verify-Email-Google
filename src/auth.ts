@@ -11,6 +11,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
   trustHost: true,
   adapter: MongoDBAdapter(clientPromise),
+  session: { strategy: "jwt" },
   providers: isGoogleAuthConfigured()
     ? [
         Google({
@@ -21,11 +22,28 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     : [],
   callbacks: {
     ...authConfig.callbacks,
-    session({ session, user }) {
+    async redirect({ url, baseUrl }) {
+      if (url.startsWith("/")) {
+        return `${baseUrl}${url}`;
+      }
+      if (new URL(url).origin === baseUrl) {
+        return url;
+      }
+      return `${baseUrl}/dashboard`;
+    },
+    jwt({ token, user }) {
+      if (user) {
+        token.email = user.email;
+        token.name = user.name;
+        token.picture = user.image;
+      }
+      return token;
+    },
+    session({ session, token }) {
       if (session.user) {
-        session.user.email = user.email;
-        session.user.name = user.name;
-        session.user.image = user.image;
+        session.user.email = token.email as string;
+        session.user.name = token.name as string;
+        session.user.image = token.picture as string;
       }
       return session;
     },
