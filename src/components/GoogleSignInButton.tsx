@@ -1,4 +1,5 @@
 import { signIn } from "@/auth";
+import { LogIn } from "lucide-react";
 
 type GoogleSignInButtonProps = {
   callbackUrl?: string;
@@ -11,6 +12,7 @@ export function GoogleSignInButton({
 }: GoogleSignInButtonProps) {
   return (
     <form
+      className="flex justify-center"
       action={async () => {
         "use server";
         await signIn("google", { redirectTo: callbackUrl });
@@ -19,9 +21,10 @@ export function GoogleSignInButton({
       <button
         type="submit"
         disabled={disabled}
-        className="flex items-center gap-3 rounded-lg border border-gray-300 bg-white px-6 py-3 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+        className="btn btn-google"
       >
         <GoogleIcon />
+        <LogIn size={16} />
         Continue with Google
       </button>
     </form>

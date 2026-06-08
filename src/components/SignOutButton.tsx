@@ -1,4 +1,5 @@
 import { signOut } from "@/auth";
+import { LogOut } from "lucide-react";
 
 export function SignOutButton() {
   return (
@@ -8,10 +9,8 @@ export function SignOutButton() {
         await signOut({ redirectTo: "/" });
       }}
     >
-      <button
-        type="submit"
-        className="rounded-lg border border-gray-300 px-4 py-2 text-sm text-gray-600 hover:bg-gray-50"
-      >
+      <button type="submit" className="btn btn-outline">
+        <LogOut size={16} />
         Sign out
       </button>
     </form>

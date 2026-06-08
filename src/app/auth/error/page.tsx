@@ -1,3 +1,4 @@
+import { AlertCircle, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 type AuthErrorPageProps = {
@@ -10,9 +11,12 @@ export default async function AuthErrorPage({ searchParams }: AuthErrorPageProps
   const isConfigError = error === "Configuration";
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-4">
-      <div className="w-full max-w-md space-y-4 rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-900">
-        <h1 className="text-lg font-semibold">Sign-in failed</h1>
+    <main className="page-center">
+      <div className="page-card alert-error space-y-4">
+        <div className="icon-badge icon-badge-error">
+          <AlertCircle size={28} />
+        </div>
+        <h1 className="text-center text-lg font-semibold">Sign-in failed</h1>
 
         {isConfigError ? (
           <>
@@ -53,7 +57,11 @@ export default async function AuthErrorPage({ searchParams }: AuthErrorPageProps
           </p>
         )}
 
-        <Link href="/" className="inline-block underline">
+        <Link
+          href="/"
+          className="btn btn-outline mx-auto inline-flex underline-offset-2 hover:underline"
+        >
+          <ArrowLeft size={16} />
           Back to sign in
         </Link>
       </div>

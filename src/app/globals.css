@@ -1,12 +1,146 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --muted: #64748b;
+  --accent: #2563eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
 }
 
 body {
-  background: var(--background);
+  margin: 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 50%, #f8fafc 100%);
   color: var(--foreground);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.page-center {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.page-card {
+  width: 100%;
+  max-width: 28rem;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  background: var(--card);
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+}
+
+.icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 auto 1rem;
+  border-radius: 9999px;
+  background: #eff6ff;
+  color: var(--accent);
+}
+
+.icon-badge-success {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.icon-badge-warning {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.icon-badge-error {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-google {
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #374151;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-google:hover {
+  background: #f9fafb;
+}
+
+.btn-google:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.btn-outline {
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #4b5563;
+  padding: 0.5rem 1rem;
+}
+
+.btn-outline:hover {
+  background: #f9fafb;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border-radius: 0.75rem;
+  background: #f8fafc;
+  padding: 1rem;
+}
+
+.user-card-text {
+  text-align: left;
+  font-size: 0.875rem;
+}
+
+.alert-warning {
+  border-radius: 0.75rem;
+  border: 1px solid #fde68a;
+  background: #fffbeb;
+  padding: 1rem;
+  text-align: left;
+  font-size: 0.875rem;
+  color: #92400e;
+}
+
+.alert-error {
+  border-radius: 0.75rem;
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  padding: 1.5rem;
+  text-align: left;
+  font-size: 0.875rem;
+  color: #991b1b;
 }
