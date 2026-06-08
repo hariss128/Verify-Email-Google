@@ -30,18 +30,7 @@ export default async function DashboardPage() {
         </div>
 
         <div className="user-card">
-          {image ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={image}
-              alt={name ?? "User"}
-              className="h-10 w-10 rounded-full"
-            />
-          ) : (
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-200">
-              <User size={20} />
-            </div>
-          )}
+          
           <div className="user-card-text">
             <p className="flex items-center gap-1 font-medium">
               <User size={14} />
